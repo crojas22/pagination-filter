@@ -22,6 +22,12 @@ clickLink function will respond to a click event and show page depending
 on number.
 */
 const appendPageLinks = (studentList, perPage) => {
+  let div = document.createElement("div");
+  div.setAttribute("class", "pagination");
+  document.querySelector(".page").appendChild(div);
+  let ul = document.createElement("ul");
+  ul.setAttribute("class", "secondL");
+  div.appendChild(ul);
   const totalPages = Math.ceil(studentList.length/perPage);
   var html = ''
   for(let i = 0; i < totalPages; i++){
@@ -43,6 +49,19 @@ of student, it will show it. Doesnt have to be an exact match, any partial match
 will show in the results. Function will also remove <a> tags
  */
 const searchStudents = () => {
+  // sections creates element for div, input and button
+  let div = document.createElement('div');
+  div.setAttribute("class", "student-search");
+  document.querySelector(".page-header").appendChild(div);
+  let input = document.createElement("input");
+  input.setAttribute('name', 'search');
+  input.setAttribute("placeholder", "search students")
+  div.appendChild(input);
+  let button1 = document.createElement('button');
+  button1.textContent = "Search";
+  button1.setAttribute("type", "submit");
+  div.appendChild(button1)
+
   const searchValue = document.querySelector('input[name=search]');
   const studentsNames = document.querySelectorAll('h3');
   const liLinks = document.querySelectorAll('.secondL li');
